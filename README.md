@@ -82,8 +82,6 @@ Simply type your message and press Enter:
 ```bash
 ✏️ You: Hello this is a test
 💬 [HEXTV4kN]: Hello this is a test
-🏗️ Setting Up a Personal Bootstrap Node
-To have a stable node (like a server) act as a network entry point:
 ```
 On your server (`with public IP`):
 
