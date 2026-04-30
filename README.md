@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # P2P Messenger - Decentralized Peer-to-Peer Messenger
 
@@ -180,3 +181,6 @@ Persistence: Network depends on stable Bootstrap peers
 
 For enhanced privacy, consider using a VPN or running your own relay node.
 
+=======
+# P2P-Messenge
+>>>>>>> 461473e1a46f733a3c462f91e198768b8df2b174
