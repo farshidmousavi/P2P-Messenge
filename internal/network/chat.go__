@@ -1,0 +1,58 @@
+package network
+
+import (
+	"bufio"
+	"context"
+	"fmt"
+	"log"
+
+	"github.com/libp2p/go-libp2p/core/host"
+	"github.com/libp2p/go-libp2p/core/network"
+	"github.com/libp2p/go-libp2p/core/peer"
+)
+
+func RegisterChatHandler(h host.Host) {
+	h.SetStreamHandler(ChatProtocol, handleChatStream)
+}
+
+// func handleChatStream(stream network.Stream) {
+// 	defer stream.Close()
+
+// 	remotePeer := stream.Conn().RemotePeer()
+// 	log.Printf("📩 message stream opened from %s\n", remotePeer)
+
+// 	reader := bufio.NewReader(stream)
+// 	msg, err := reader.ReadString('\n')
+// 	if err != nil {
+// 		log.Println("read error:", err)
+// 		return
+// 	}
+
+// 	fmt.Printf("💬 %s: %s", remotePeer, msg)
+// }
+func handleChatStream(stream network.Stream) {
+    reader := bufio.NewReader(stream)
+    for {
+        msg, err := reader.ReadString('\n')
+        if err != nil {
+            break  // خروج از حلقه وقتی استریم بسته شد
+        }
+        fmt.Printf("💬 %s: %s", stream.Conn().RemotePeer(), msg)
+    }
+}
+
+func SendMessage(ctx context.Context, h host.Host, peerID peer.ID, text string) error {
+	stream, err := h.NewStream(ctx, peerID, ChatProtocol)
+	if err != nil {
+		return err
+	}
+	defer stream.Close()
+
+	writer := bufio.NewWriter(stream)
+	_, err = writer.WriteString(fmt.Sprintf("%s\n", text))
+	if err != nil {
+		return err
+	}
+
+	return writer.Flush()
+}
