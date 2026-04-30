@@ -53,7 +53,7 @@ Starting the Program
 After running the program, it will automatically connect to saved Bootstrap peers and join the general chat room:
 
 ## Output
-`
+```bash
 🚀 Starting P2P Messenger...
 ✅ Node ID: 12D3KooWBwUZ5juuwos9MzXByjGwzBw87d3qYAyAgdHmHEXTV4kN
 📡 Listening on: /ip4/192.168.1.1/tcp/63730/p2p/12D3KooWB...
@@ -63,7 +63,7 @@ After running the program, it will automatically connect to saved Bootstrap peer
 ✅ Connected! Type your message or commands:
 📝 Commands: 'bootstrap', 'list-bootstrap', 'connect-bootstrap', 'clean-bootstrap'
 ✏️ You:
-`
+```
 -------------------------------------------------------
 ## Available Commands
 Command	                    Description	Example
@@ -79,12 +79,12 @@ Command	                    Description	Example
 ## Sending Messages
 Simply type your message and press Enter:
 
-`
+```bash
 ✏️ You: Hello this is a test
 💬 [HEXTV4kN]: Hello this is a test
 🏗️ Setting Up a Personal Bootstrap Node
 To have a stable node (like a server) act as a network entry point:
-`
+```
 On your server (`with public IP`):
 
 ```bash
