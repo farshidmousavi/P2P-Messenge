@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 # P2P Messenger - Decentralized Peer-to-Peer Messenger
 
@@ -41,7 +40,7 @@ If you're building from source and the vendor folder is missing:
 
 ```bash
 # Download dependencies (requires internet, use Iranian proxy if needed)
-go env -w GOPROXY=https://goproxy.ir,direct
+go env -w GOPROXY=https://package-mirror.liara.ir/repository/go/
 go env -w GOSUMDB=off
 go mod download
 
@@ -54,6 +53,7 @@ Starting the Program
 After running the program, it will automatically connect to saved Bootstrap peers and join the general chat room:
 
 ## Output
+`
 🚀 Starting P2P Messenger...
 ✅ Node ID: 12D3KooWBwUZ5juuwos9MzXByjGwzBw87d3qYAyAgdHmHEXTV4kN
 📡 Listening on: /ip4/192.168.1.1/tcp/63730/p2p/12D3KooWB...
@@ -63,7 +63,7 @@ After running the program, it will automatically connect to saved Bootstrap peer
 ✅ Connected! Type your message or commands:
 📝 Commands: 'bootstrap', 'list-bootstrap', 'connect-bootstrap', 'clean-bootstrap'
 ✏️ You:
-
+`
 -------------------------------------------------------
 ## Available Commands
 Command	                    Description	Example
@@ -73,55 +73,62 @@ Command	                    Description	Example
 - "clean-bootstrap"	        Automatically remove inactive Bootstrap peers	clean-bootstrap
 - "connect <address>"	    Manually connect to a specific peer	connect /ip4/192.168.88.254/tcp/63730/p2p/12D3KooW...
 - "<message text>"           Send message to the public chat room	Hello everyone!
-< br / >
-📖 To use commands you simply need to type the command below and hit the ienter
+<br/>
+📖 Note: To use commands, simply type the command and press Enter.
 
 ## Sending Messages
 Simply type your message and press Enter:
 
-text
+`
 ✏️ You: Hello this is a test
 💬 [HEXTV4kN]: Hello this is a test
 🏗️ Setting Up a Personal Bootstrap Node
 To have a stable node (like a server) act as a network entry point:
+`
+On your server (`with public IP`):
 
-On your server (with public IP):
-bash
+```bash
 go run -mod=vendor ./cmd/node/main.go
 # After startup, type:
 bootstrap
+```
+
 On client machines:
-bash
+```bash
 go run -mod=vendor ./cmd/node/main.go
 # The program will automatically connect to the Bootstrap
-🔧 Troubleshooting
+```
+
+## 🔧 Troubleshooting
 1. connection refused or dial backoff errors
 This means a Bootstrap peer is offline. To fix:
 
-bash
+
 # Remove inactive Bootstrap peers
 clean-bootstrap
 
 # Reconnect to active Bootstrap peers
-ct bootstrap
+connect-bootstrap
 2. Two nodes can't find each other
 Solutions:
 
 Wait a few minutes for DHT to propagate information
 
-Use the ct bootstrap command
+Use the connect-bootstrap command
 
 Manually connect using connect <address>
 
 3. How to share the program with others
 Simply zip the entire project folder (including the vendor directory) and share it. The recipient only needs Go installed and can run:
 
-bash
+```bash
 go run -mod=vendor ./cmd/node/main.go
+```
 No internet connection required!
 
-📁 Project Structure
-text
+## 📁 Project Structure
+
+```bash
 p2p-messenger/
 ├── cmd/
 │   └── node/
@@ -143,7 +150,8 @@ p2p-messenger/
 ├── vendor/                      # All dependencies (offline-ready)
 ├── go.mod                       # Project dependencies
 └── README.md                    # This file
-💾 Configuration Storage
+```
+## 💾 Configuration Storage
 Bootstrap settings are stored in:
 
 Windows: C:\Users\[Username]\.p2p-messenger\bootstrap.json
@@ -151,14 +159,15 @@ Windows: C:\Users\[Username]\.p2p-messenger\bootstrap.json
 Linux/Mac: ~/.p2p-messenger/bootstrap.json
 
 Example file content:
-
+```bash
 json
 {
   "peers": [
-    "/ip4/192.168.88.254/tcp/63730/p2p/12D3KooWBwUZ5juuwos9MzXByjGwzBw87d3qYAyAgdHmHEXTV4kN"
+    "/ip4/192.168.1.1/tcp/63730/p2p/12D3KooWBwUZ5juuwos9MzXByjGwzBw87d3qYAyAgdHmHEXTV4kN"
   ]
 }
-🤝 Contributing
+```
+## 🤝 Contributing
 Fork the repository
 
 Create a feature branch (git checkout -b feature/amazing-feature)
@@ -169,10 +178,10 @@ Push to the branch (git push origin feature/amazing-feature)
 
 Open a Pull Request
 
-📜 License
-This project is licensed under the MIT License.
+## 📜 License
+This project is licensed under the Apache License Version 2.0.
 
-⚠️ Privacy & Security Notes
+## ⚠️ Privacy & Security Notes
 Privacy: Your IP is only visible to directly connected peers
 
 Security: Message encryption is currently disabled (can be added)
@@ -181,6 +190,3 @@ Persistence: Network depends on stable Bootstrap peers
 
 For enhanced privacy, consider using a VPN or running your own relay node.
 
-=======
-# P2P-Messenge
->>>>>>> 461473e1a46f733a3c462f91e198768b8df2b174
